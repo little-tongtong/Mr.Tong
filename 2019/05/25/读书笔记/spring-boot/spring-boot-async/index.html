@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/tong.sir.blog.io/img/favicon.ico">
+
+    <title>
+        
+        Spring Boot 异步 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/tong.sir.blog.io/css/aircloud.css">
+    <link rel="stylesheet" href="/tong.sir.blog.io/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/tong.sir.blog.io/img/avator.jpg">
+        </div>
+        <div class="name">
+            <i>tong</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/tong.sir.blog.io/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tong.sir.blog.io/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tong.sir.blog.io/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tong.sir.blog.io/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-异步方法"><span class="toc-text">Spring 异步方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用并发编程的步骤如下"><span class="toc-text">使用并发编程的步骤如下</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-计划任务"><span class="toc-text">Spring 计划任务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用计划任务的步骤如下"><span class="toc-text">使用计划任务的步骤如下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#计划任务支持的计划方式"><span class="toc-text">计划任务支持的计划方式</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Spring Boot 异步
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-05-25 23:34:40</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tong.sir.blog.io/tags/#Spring" title="Spring">Spring</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content no-indent">
+        <h3 id="Spring-异步方法"><a href="#Spring-异步方法" class="headerlink" title="Spring 异步方法"></a>Spring 异步方法</h3><p>在Spring中通过TaskExecutor（任务执行器）实现多线程和并发编程。</p>
+<h4 id="使用并发编程的步骤如下"><a href="#使用并发编程的步骤如下" class="headerlink" title="使用并发编程的步骤如下"></a>使用并发编程的步骤如下</h4><blockquote>
+<p>使用过程中，要注意@EnableAsync注解的生效范围，如未使用@EnableAsync注解，或范围不对，则异步方法仍旧会同步执行</p>
+</blockquote>
+<ol>
+<li>开启异步@EnableAsync<ul>
+<li>该注解用于类上，该类的所有异步方法生效</li>
+<li>该注解用于主入口类上，或配置类上，全局异步生效</li>
+</ul>
+</li>
+<li>定义异步方法@Async<ul>
+<li>该注解用于类上，该类的所有方法为异步方法</li>
+<li>该注解用于某个函数上，该函数方法为异步执行</li>
+</ul>
+</li>
+</ol>
+<h3 id="Spring-计划任务"><a href="#Spring-计划任务" class="headerlink" title="Spring 计划任务"></a>Spring 计划任务</h3><h4 id="使用计划任务的步骤如下"><a href="#使用计划任务的步骤如下" class="headerlink" title="使用计划任务的步骤如下"></a>使用计划任务的步骤如下</h4><blockquote>
+<p>使用计划任务，同样要开启@EnableAsync注解，然后再Bean对象中编写计划任务方法</p>
+</blockquote>
+<ol>
+<li>开启计划任务@EnableScheduling</li>
+<li>定义计划任务@Scheduled<h4 id="计划任务支持的计划方式"><a href="#计划任务支持的计划方式" class="headerlink" title="计划任务支持的计划方式"></a>计划任务支持的计划方式</h4></li>
+</ol>
+<ul>
+<li><p>cron表达式<br>cron表达式格式为 {秒数} {分钟} {小时} {日期} {月份} {星期} {年份(可为空)}<br>示例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Scheduled(cron = <span class="string">"0 0 12 ? * *"</span>)//每天中午12点执行</span><br><span class="line">public void <span class="function"><span class="title">fixTimeScheduleTask</span></span>()&#123;</span><br><span class="line">    //<span class="keyword">do</span> something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fixRate<br>按固定频率执行<br>示例</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Scheduled(fixedRate = 5000)//每隔5秒执行一次</span><br><span class="line">public void <span class="function"><span class="title">fixRateScheduleTask</span></span>()&#123;</span><br><span class="line">    //<span class="keyword">do</span> something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>fixDelay<br>按固定时间间隔执行，即距离上次执行完成之后某个固定间隔时间再次执行<br>示例 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Scheduled(fixedDelay = 5000)//间隔5秒执行一次</span><br><span class="line">public void <span class="function"><span class="title">fixDelayScheduleTask</span></span>()&#123;</span><br><span class="line">    //<span class="keyword">do</span> something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <!-- <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p> -->
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/tong.sir.blog.io/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/tong.sir.blog.io/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

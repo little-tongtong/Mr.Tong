@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/tong.sir.blog.io/img/favicon.ico">
+
+    <title>
+        
+        Spring Boot 多数据源 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/tong.sir.blog.io/css/aircloud.css">
+    <link rel="stylesheet" href="/tong.sir.blog.io/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/tong.sir.blog.io/img/avator.jpg">
+        </div>
+        <div class="name">
+            <i>tong</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/tong.sir.blog.io/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tong.sir.blog.io/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tong.sir.blog.io/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tong.sir.blog.io/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-多数据源配置"><span class="toc-text">Spring 多数据源配置</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Spring Boot 多数据源
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-05-26 00:34:38</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tong.sir.blog.io/tags/#Spring" title="Spring">Spring</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content no-indent">
+        <h3 id="Spring-多数据源配置"><a href="#Spring-多数据源配置" class="headerlink" title="Spring 多数据源配置"></a>Spring 多数据源配置</h3><p>基于Druid实现多数据源的切换</p>
+<ul>
+<li><p>application.properties配置项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## primary</span></span><br><span class="line">primary.data.druid.url=jdbc:mysql://127.0.0.1:3306/primary?allowMultiQueries=<span class="literal">true</span>&amp;autoReconnect=<span class="literal">true</span>&amp;useSSL=<span class="literal">false</span>&amp;useUnicode=<span class="literal">true</span>&amp;characterEncoding=utf-8&amp;nullNamePatternMatchesAll=<span class="literal">true</span>&amp;serverTimezone=Asia/Shanghai</span><br><span class="line">primary.data.druid.username=admin</span><br><span class="line">primary.data.druid.password=123456</span><br><span class="line"><span class="comment">## second</span></span><br><span class="line">second.data.druid.url=jdbc:mysql://127.0.0.1:3306/second?allowMultiQueries=<span class="literal">true</span>&amp;autoReconnect=<span class="literal">true</span>&amp;useSSL=<span class="literal">false</span>&amp;useUnicode=<span class="literal">true</span>&amp;characterEncoding=utf-8&amp;nullNamePatternMatchesAll=<span class="literal">true</span>&amp;serverTimezone=Asia/Shanghai</span><br><span class="line">second.data.druid.username=admin</span><br><span class="line">second.data.druid.password=123456</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义主数据源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@ConditionalOnClass(&#123;DruidDataSource.class&#125;)</span><br><span class="line">@ConditionalOnProperty(</span><br><span class="line">        prefix = <span class="string">"primary.data.druid"</span>, //主数据源配置</span><br><span class="line">        name = &#123;<span class="string">"url"</span>&#125;</span><br><span class="line">)</span><br><span class="line">@EnableConfigurationProperties</span><br><span class="line">public class PrimaryDruidAutoConfiguration &#123;</span><br><span class="line">    public <span class="function"><span class="title">PrimaryDruidAutoConfiguration</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean(</span><br><span class="line">            name = <span class="string">"primaryDataSource"</span>,</span><br><span class="line">            initMethod = <span class="string">"init"</span>,</span><br><span class="line">            destroyMethod = <span class="string">"close"</span></span><br><span class="line">    )</span><br><span class="line">    @ConfigurationProperties(</span><br><span class="line">            prefix = <span class="string">"primary.data.druid"</span></span><br><span class="line">    )//定义主DataSource</span><br><span class="line">    public DruidDataSource <span class="function"><span class="title">primaryDataSource</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> new DruidDataSource();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    @ConfigurationProperties(</span><br><span class="line">            prefix = <span class="string">"primary.data.druid.wall-filter"</span></span><br><span class="line">    )</span><br><span class="line">    public WallConfig wallConfig(@Qualifier(<span class="string">"primaryDataSource"</span>) DruidDataSource dataSource) &#123;</span><br><span class="line">        Iterator var2 = dataSource.getProxyFilters().iterator();</span><br><span class="line"></span><br><span class="line">        Filter filter;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!var2.hasNext()) &#123;</span><br><span class="line">                <span class="built_in">return</span> new WallConfig();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            filter = (Filter)var2.next();</span><br><span class="line">        &#125; <span class="keyword">while</span>(!(filter instanceof WallFilter));</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> ((WallFilter)filter).getConfig();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义第二数据源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@ConditionalOnClass(&#123;DruidDataSource.class&#125;)</span><br><span class="line">@ConditionalOnProperty(</span><br><span class="line">        prefix = <span class="string">"second.data.druid"</span>, //第二数据源配置</span><br><span class="line">        name = &#123;<span class="string">"url"</span>&#125;</span><br><span class="line">)</span><br><span class="line">@EnableConfigurationProperties</span><br><span class="line">public class SecondDruidAutoConfiguration &#123;</span><br><span class="line">    public <span class="function"><span class="title">SecondDruidAutoConfiguration</span></span>() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean(</span><br><span class="line">            name = <span class="string">"secondDataSource"</span>,</span><br><span class="line">            initMethod = <span class="string">"init"</span>,</span><br><span class="line">            destroyMethod = <span class="string">"close"</span></span><br><span class="line">    )</span><br><span class="line">    @ConfigurationProperties(</span><br><span class="line">            prefix = <span class="string">"second.data.druid"</span></span><br><span class="line">    )//定义第二DataSource</span><br><span class="line">    public DruidDataSource <span class="function"><span class="title">primaryDataSource</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> new DruidDataSource();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    @ConfigurationProperties(</span><br><span class="line">            prefix = <span class="string">"second.data.druid.wall-filter"</span></span><br><span class="line">    )</span><br><span class="line">    public WallConfig wallConfig(@Qualifier(<span class="string">"secondDataSource"</span>) DruidDataSource dataSource) &#123;</span><br><span class="line">        Iterator var2 = dataSource.getProxyFilters().iterator();</span><br><span class="line"></span><br><span class="line">        Filter filter;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!var2.hasNext()) &#123;</span><br><span class="line">                <span class="built_in">return</span> new WallConfig();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            filter = (Filter)var2.next();</span><br><span class="line">        &#125; <span class="keyword">while</span>(!(filter instanceof WallFilter));</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> ((WallFilter)filter).getConfig();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义动态数据源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class DynamicDataSource extends AbstractRoutingDataSource &#123;</span><br><span class="line">    private static final ThreadLocal&lt;String&gt; contextHolder = new ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    public DynamicDataSource(DataSource defaultTargetDataSource, Map&lt;Object, Object&gt; targetDataSources) &#123;</span><br><span class="line">        super.setDefaultTargetDataSource(defaultTargetDataSource);</span><br><span class="line">        super.setTargetDataSources(targetDataSources);</span><br><span class="line">        super.afterPropertiesSet();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static String <span class="function"><span class="title">getDataSource</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> contextHolder.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void setDataSource(String dataSource) &#123;</span><br><span class="line">        contextHolder.set(dataSource);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void <span class="function"><span class="title">clearDataSource</span></span>() &#123;</span><br><span class="line">        contextHolder.remove();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected Object <span class="function"><span class="title">determineCurrentLookupKey</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> getDataSource();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置动态数据源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class DynamicDataSourceConfiguration &#123;</span><br><span class="line">    @Bean</span><br><span class="line">    @Primary</span><br><span class="line">    public DynamicDataSource dynamicDataSource(@Qualifier(<span class="string">"primaryDataSource"</span>) DruidDataSource primaryDataSource,</span><br><span class="line">                                               @Qualifier(<span class="string">"secondDataSource"</span>) DruidDataSource secondDataSource) &#123;</span><br><span class="line">        Map&lt;Object, Object&gt; targetDataSources = new HashMap&lt;&gt;();</span><br><span class="line">        targetDataSources.put(<span class="string">"PRIMARY"</span>, primaryDataSource);</span><br><span class="line">        targetDataSources.put(<span class="string">"SECOND"</span>, secondDataSource);</span><br><span class="line">        <span class="built_in">return</span> new DynamicDataSource(primaryDataSource, targetDataSources);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义切片注解</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123;ElementType.METHOD&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">public @interface SecondDataSourceAudit &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现切片方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Aspect</span><br><span class="line">@Component</span><br><span class="line">public class DynamicDataSourceAspect &#123;</span><br><span class="line"></span><br><span class="line">    //进入方法前，切换为第二数据源</span><br><span class="line">    @Before(<span class="string">"execution( * xxx.*(..)) &amp;&amp; @annotation(SecondDataSourceAudit)"</span>)</span><br><span class="line">    public void switchSecondDataSource(JoinPoint point) &#123;</span><br><span class="line">        DynamicDataSource.setDataSource(<span class="string">"SECOND"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //方法结束后，或有异常抛出后，切换为主数据源</span><br><span class="line">    @AfterReturning(<span class="string">"execution( * xxx.*(..)) &amp;&amp; @annotation(SecondDataSourceAudit)"</span>)</span><br><span class="line">    @AfterThrowing(<span class="string">"execution( * xxx.*(..)) &amp;&amp; @annotation(SecondDataSourceAudit)"</span>)</span><br><span class="line">    public void restoreDataSourceAfterReturning(JoinPoint point) &#123;</span><br><span class="line">        DynamicDataSource.clearDataSource();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在需要切换数据源的方法上添加注解</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@SecondDataSourceAudit</span><br><span class="line">public void <span class="function"><span class="title">secondDataSourceTest</span></span>() &#123;</span><br><span class="line">    //<span class="keyword">do</span> query</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>切换数据源需要在事务开启之前进行切换，如果事务已经开启，则数据源切换不成功<br>即@SecondDataSourceAudit注解需要在事务控制层之前</p>
+</blockquote>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <!-- <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p> -->
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/tong.sir.blog.io/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/tong.sir.blog.io/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
