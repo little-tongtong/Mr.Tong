@@ -78,6 +78,13 @@
                 </a>
             </li>
             
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
         </ul>
     </div>
     
@@ -146,6 +153,20 @@
     <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
     </li> -->
     <div class="post-preview">
+        <a href="/2019/04/29/读书笔记/spring-boot/spring-boot-base/">
+            <h2 class="post-title">
+                Spring Boot 基础
+            </h2>
+            
+        </a>
+        <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+    </div>
+    
+    <!-- <li class="listing-item">
+    <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+    </li> -->
+    <div class="post-preview">
         <a href="/2019/05/25/读书笔记/spring-boot/spring-boot-async/">
             <h2 class="post-title">
                 Spring Boot 异步
@@ -163,20 +184,6 @@
         <a href="/2019/05/26/读书笔记/spring-boot/spring-boot-dataSource/">
             <h2 class="post-title">
                 Spring Boot 多数据源
-            </h2>
-            
-        </a>
-        <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-    </div>
-    
-    <!-- <li class="listing-item">
-    <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-    </li> -->
-    <div class="post-preview">
-        <a href="/2019/04/29/读书笔记/spring-boot/spring-boot-base/">
-            <h2 class="post-title">
-                Spring Boot 基础
             </h2>
             
         </a>
@@ -222,7 +229,7 @@
 
 <script>
     // We expose some of the variables needed by the front end
-    window.hexo_search_path = ""
+    window.hexo_search_path = "search.json"
     window.hexo_root = "/"
     window.isPost = false
 </script>
