@@ -11,7 +11,7 @@
 
     <title>
         
-        
+        Spring Boot 数据传输时区问题 - undefined
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li class="active">
+            <li>
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot-数据传输时间问题"><span class="toc-text">Spring Boot 数据传输时间问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题描述"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原因"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决办法"><span class="toc-text">解决办法</span></a></li></ol></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,133 +116,50 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 720px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-09-15</div>
-        <div class="post-info">
-            <a href="/2019/09/15/读书笔记/spring-boot/spring-boot-log/">
-                <h3>
-                    Spring Boot SLF4J Log级别
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        Spring Boot 数据传输时区问题
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-09-15</div>
-        <div class="post-info">
-            <a href="/2019/09/15/读书笔记/spring-boot/spring-boot-time-zone/">
-                <h3>
-                    Spring Boot 数据传输时区问题
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-09-15 22:32:26</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-05-26</div>
-        <div class="post-info">
-            <a href="/2019/05/26/读书笔记/spring-boot/spring-boot-dataSource/">
-                <h3>
-                    Spring Boot 多数据源
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-05-25</div>
-        <div class="post-info">
-            <a href="/2019/05/25/读书笔记/spring-boot/spring-boot-async/">
-                <h3>
-                    Spring Boot 异步
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-04-29</div>
-        <div class="post-info">
-            <a href="/2019/04/29/读书笔记/spring-boot/spring-boot-base/">
-                <h3>
-                    Spring Boot 基础
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-04-21</div>
-        <div class="post-info">
-            <a href="/2019/04/21/hello-world/">
-                <h3>
-                    First Blog
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Hello Word" title="Hello Word">Hello Word</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-</div>
-<ul class="pager">
-    
-    
+    <div class="post-content no-indent">
+        <h3 id="Spring-Boot-数据传输时间问题"><a href="#Spring-Boot-数据传输时间问题" class="headerlink" title="Spring Boot 数据传输时间问题"></a>Spring Boot 数据传输时间问题</h3><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><ul>
+<li>有两个服务均使用Spring Boot框架进行搭建，服务A读取数据库，将数据封装为Object对象传给服务B，服务B解析拿到的数据并进行处理。但A发给的B的数据，如果有时间类型（LocalDateTime）， 中间过程会导致时间差了8个小时。</li>
 </ul>
+<h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><ul>
+<li>框架默认时区为0时区，导致数据封装、转换过程差了8个时区</li>
+</ul>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><ul>
+<li>将时间类型（LocalDateTime）封装为自定义字符串类型，接收到数据后再进行转换</li>
+<li>或 在发送端服务配置文件中加入如下代码，设置默认时区<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.jackson.time-zone=GMT+8</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
 
     </div>
 </div>
@@ -278,12 +199,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://tongzhang.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 

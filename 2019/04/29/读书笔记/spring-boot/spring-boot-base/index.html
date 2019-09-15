@@ -183,13 +183,13 @@
 </ul>
 <h3 id="AOP切片"><a href="#AOP切片" class="headerlink" title="AOP切片"></a>AOP切片</h3><p>AOP可以让一组类或一组方法共享相同的行为。相比于OOP只能通过继承类和实现接口，来使代码的耦合度增强，类继承只能单继承，阻碍了更多行为添加到一组类上，AOP弥补了OOP的这一不足。</p>
 <p><strong>定义切面：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Aspect</span><br><span class="line">@Component</span><br><span class="line">public class TestAspect &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>注解拦截：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@PointCut(<span class="string">"@annotation(com.tong.aop.Action)"</span>) //自定义的注解类</span><br><span class="line">public void <span class="function"><span class="title">annotationAspect</span></span>()&#123;&#125;</span><br><span class="line"></span><br><span class="line">@After(<span class="string">"annotationAspect"</span>) //只要添加了@Action注解的方法都能拦截到</span><br><span class="line">public afterAnnotationAspect(JoinPoint joinPoint)&#123;</span><br><span class="line">    //<span class="keyword">do</span> something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注解拦截：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@PointCut(<span class="string">"@annotation(com.tong.aop.Action)"</span>) //自定义的注解类</span><br><span class="line">public void <span class="function"><span class="title">annotationAspect</span></span>()&#123;&#125;</span><br><span class="line"></span><br><span class="line">@After(<span class="string">"annotationAspect"</span>) //只要添加了@Action注解的方法都能拦截到</span><br><span class="line">public void afterAnnotationAspect(JoinPoint joinPoint)&#123;</span><br><span class="line">    //<span class="keyword">do</span> something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>方法拦截：</p>
 <pre><code class="bash">@PointCut(<span class="string">"@execution(com.tong.service.ActionService.*(..))"</span>) //该路径下的所有方法
 public void <span class="function"><span class="title">methodAspect</span></span>(){}
 
 @After(<span class="string">"methodAspect"</span>)
-public afterMethodAspectAspect(JoinPoint joinPoint){
+public void afterMethodAspectAspect(JoinPoint joinPoint){
     //<span class="keyword">do</span> something
 }
 </code></pre>

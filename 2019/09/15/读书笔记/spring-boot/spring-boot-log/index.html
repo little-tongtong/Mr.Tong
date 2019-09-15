@@ -11,7 +11,7 @@
 
     <title>
         
-        
+        Spring Boot SLF4J Log级别 - undefined
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li class="active">
+            <li>
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot-SLF4J-Log级别"><span class="toc-text">Spring Boot SLF4J Log级别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SLF4J-Log级别分为以下几种"><span class="toc-text">SLF4J Log级别分为以下几种</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题描述"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决办法"><span class="toc-text">解决办法</span></a></li></ol></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,133 +116,51 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 720px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-09-15</div>
-        <div class="post-info">
-            <a href="/2019/09/15/读书笔记/spring-boot/spring-boot-log/">
-                <h3>
-                    Spring Boot SLF4J Log级别
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        Spring Boot SLF4J Log级别
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-09-15</div>
-        <div class="post-info">
-            <a href="/2019/09/15/读书笔记/spring-boot/spring-boot-time-zone/">
-                <h3>
-                    Spring Boot 数据传输时区问题
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-09-15 22:32:53</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-05-26</div>
-        <div class="post-info">
-            <a href="/2019/05/26/读书笔记/spring-boot/spring-boot-dataSource/">
-                <h3>
-                    Spring Boot 多数据源
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-05-25</div>
-        <div class="post-info">
-            <a href="/2019/05/25/读书笔记/spring-boot/spring-boot-async/">
-                <h3>
-                    Spring Boot 异步
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-04-29</div>
-        <div class="post-info">
-            <a href="/2019/04/29/读书笔记/spring-boot/spring-boot-base/">
-                <h3>
-                    Spring Boot 基础
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-04-21</div>
-        <div class="post-info">
-            <a href="/2019/04/21/hello-world/">
-                <h3>
-                    First Blog
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Hello Word" title="Hello Word">Hello Word</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-</div>
-<ul class="pager">
-    
-    
+    <div class="post-content no-indent">
+        <h3 id="Spring-Boot-SLF4J-Log级别"><a href="#Spring-Boot-SLF4J-Log级别" class="headerlink" title="Spring Boot SLF4J Log级别"></a>Spring Boot SLF4J Log级别</h3><h4 id="SLF4J-Log级别分为以下几种"><a href="#SLF4J-Log级别分为以下几种" class="headerlink" title="SLF4J Log级别分为以下几种"></a>SLF4J Log级别分为以下几种</h4><ul>
+<li>debug：调试，一般作为最低级别</li>
+<li>info： 输出重要的信息、提示信息</li>
+<li>warn： 警告</li>
+<li>error：错误信息</li>
 </ul>
+<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>在开发过程中，为了方便调试或某种原因，将过程数据直接打印输出，在服务实际运行中，中间过程数据过多，导致日志输出很多，同时服务占用内存急剧上升<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 打印中间过程数据</span><br><span class="line">LOGGER.info(<span class="string">"Save datas: [&#123;&#125;]"</span>, dataList);</span><br></pre></td></tr></table></figure></p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><ul>
+<li>控制好日志级别，有些日志仅在开发过程中查看，可以降低级别，上线时配置日志打印级别忽略此类型日志</li>
+<li>避免在程序中过多打印中间数据</li>
+</ul>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
 
     </div>
 </div>
@@ -278,12 +200,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://tongzhang.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
